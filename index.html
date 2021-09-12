@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Comptible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./stylesheet/style.css" />
+    <!-- <link href for google fonts> -->
+    <title>Weather Forecast</title>
+
+</head>
+
+<body class="flex-column min-100-vh">
+<header>
+    <h1 class="title-page">Welcome to the Weather Forecast!</h1>
+    <p>Type a city below to see the weather forecast for the nest five days</p>
+</header>
+
+<main class="flex-row justify-space-between">
+<div class="col-12 col-md-4">
+    
+    <div class="search-bar">
+        <h3 class="search-bar text-uppercase">Search by City</h3>
+        <form id="city-form" class="card-body">
+            <label class="form-label" for="city">Search City</label>
+            <input name="city" id="city" type="text" autofocus="true" class="form-input" />
+            <button type="submit" class="button">Search</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3 class="card-header text-uppercase">Quick Weather Forecast</h3>
+        <div id="city-buttons" class="card-body">
+        <button name="Seattle">Seattle</button>
+        <button name="Los Angeles">Los Angeles</button>
+        <button name="Houston">Houston</button>
+        <button name="New York">New York</button>
+    </div>
+    </div>
+</div>
+<div class="col-12 col-md-8">
+    <h2 class="subtitle">Showing the weather forecast for the next 5 days</h2>
+    <div id="repos-container" class="list-group"></div>
+</div>
+</main>
+
+<script src="./js/javascript.js"></script>
+
+
+</body>
+
+
+
+</html>
