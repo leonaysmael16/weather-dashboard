@@ -13,6 +13,11 @@
 </head>
 
 <body class="flex-column min-100-vh">
+    <header class="container-fluid bg-dark text-light p-3">
+        <div class="d-flex justify-content-center">
+          <h1>Weather Dashboard</h1>
+        </div>
+      </header>
 <header>
     <h1 class="title-page">Welcome to the Weather Forecast!</h1>
     <p>Type a city below to see the weather forecast for the nest five days</p>
@@ -26,58 +31,75 @@
         <form id="city-form" class="card-body">
             <label class="form-label" for="city">Search City</label>
             <input id="search-city" type="text" class="form-input" />
-            <button type="submit" class="button" id="search-button">Search</button>
+            <button type="submit" class="btn btn-primary" id="search-button">Search</button>
         </form>
+        <ul id="search-history"></ul>
     </div>
+
+
 
     <button class="btn btn-primary" type="button" id="clear-button">Clear History</button>
 <!-- showing current weather for current city -->
     <div class="col-sm-8">
         <div id="current-weather">
             <h3 id="current-city"></h3>
-            <p>Temperature: <span class="current" id="current-temp"></span></p>
-            <p>Humidity: <span class="current" id="Humidity"></span></p>
-            <p>Wind Speed: <span class="current" id="wind-speed"></span></p>
-            <p>UV index: <span class="current" id="uv-index"></span></p>
-
+            <p id="current-day"></p>
+            <p id="current-temp"></p>
+            <p id="current-humidity"></p>
+            <p id="current-wind"></p>
+            <p id="currentUv"></p>
 
         </div>
     </div>
     </div>
 </div>
 <!-- 5 day forecast -->
-<div class="col-12 col-md-8" id="future-weather">
-    <h3>5-Day Forecast</h3>
-    <div>
+ <div class="col-12 col-md-8" id="future-weather">
+    <h3>5-Day Forecast: </h3>
+    <div class="col">
         <p id="day0"></p>
         <p id="Img0"></p>
         <p>Temp: <span id="Temp0"></span></p>
         <p>Humidity: <span id="Humidity0"></span></p>
     </div>
-    <div>
+ </div>
+    <div class="col">
         <p id="day1"></p>
         <p id="img1"></p>
         <p>Temp: <span id="Temp1"></span></p>
         <p>Humidity: <span id="Humidity1"></span></p>
     </div>
-    <div>
+    <div class="col">
         <p id="day2"></p>
         <p id="img2"></p>
         <p>Temp: <span id="Temp2"></span></p>
         <p>Humidity: <span id="humidity2"></span></p>
     </div>
-    <div>
+    <div class="col">
         <p id="day3"></p>
         <p id="img3"></p>
         <p>Temp: <span id="Temp3"></span></p>
         <p>Humidity: <span id="humidity3"></span></p>
     </div>
-    <div>
+    <div class="col">
         <p id="day4"></p>
         <p id="img4"></p>
         <p>Temp: <span id="temp4"></span></p>
         <p>Humidity: <span id="temp4"></span></p>
+    </div> 
+
+    <!-- <div class="row">
+        <div class="col-12">
+            <h3>5-Day Forecast</h3>
+        </div>
     </div>
+    <div class="row">
+        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+    </div> -->
 
 
     
