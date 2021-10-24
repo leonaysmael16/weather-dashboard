@@ -1,6 +1,7 @@
 var APIkey = "9ecbdf9d0dc12db2360cb9d8bc558329";
 // // variables
 // // var search = document.querySelector('.search-button');
+var city = '';
 var search = $("#city-form");
 var searchCity = $("#search-city");
 var currentCity = $("#current-city");
@@ -36,8 +37,50 @@ var fiveDay = $("#future-weather");
 //   }
 // }
 
+// display current weather forecast
+
+function currentForecast(city) {
+    var currentWeatherUrl =
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+      city +
+      "&appid=" +
+      APIkey;
+
+      fetch(currentWeatherUrl)
+      .then(function (data) {
+        console.log(data)
+
+        var forecastIcon = data.weather[0].icon;
+        var iconURL = "https://openweatherapp.org/img/wn"+ forecastIcon +"@2x.png";
+        var forecastImg = $('<img>');
+        forecastImg.attr(data.name + ' ');
+        currentCity.append(forecastImg);
+
+        var forecastDescription = data.weather[0].description;
+        forecastDec.text(forecastDescription);
+        forecastDec.css('font-style', 'bold');
+
+        currentDate.text(moment().format('dddd, l'));
+        currentDate.css('font-weight', 'bold');
+
+        var tempResult = data.main.temp;
+        tempCurrent.text('Temp: ' + ' ' + Math.floor(tempResult) + 'F');
+
+        var windResult = data.wind.speed;
+        curretWind.text('Wind: ' + ' ' + Math.floor(windResult) + 'MPH');
+
+
+      })
+}
+
+// fetching UV index
 function uvIndex (lat, lon) {
-    var uvURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude={minutely,hourly,daily}&appid=' + apiKey;
+    var uvURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + 
+    lat + 
+    '&lon=' + 
+    lon + 
+    '&exclude={minutely,hourly,daily}&appid=' + 
+    APIKey;
     
     fetch(uvIndex)
     .then(function(response) {
@@ -59,10 +102,14 @@ function uvIndex (lat, lon) {
         } else if (UVresult > 2.0 && UVresult < 6.0) {
             displayUV.addClass('bg-warning text-black');
         } else if (UVresult > 8.0 && UVresult < 10.9) {
-            
-        }
+            displayUV.addClass('bg-danger text-black');
 
-    })
+        }
+        else {
+            displayUV.css({'background-color': 'blue', 'color': 'black'});
+        };
+
+    });
 }
 
 // clears the search history
@@ -79,6 +126,6 @@ function uvIndex (lat, lon) {
 search.on('submit', function (event){
     event.preventDefault();
     console.log(searchCity);
-    weatherDisplay();
+    currentForecast();
  });
 
