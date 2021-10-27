@@ -1,10 +1,13 @@
 var APIkey = "9ecbdf9d0dc12db2360cb9d8bc558329";
 // // variables
 // // var search = document.querySelector('.search-button');
-var city = '';
+// var city = '';
 var search = $("#city-form");
 var searchCity = $("#search-city");
+var currentDate = $("#current-day");
 var currentCity = $("#current-city");
+var currentIcon = $("#current-icon");
+var currentDescription = $("#current-description");
 var tempCurrent = $("#current-temp");
 var humidityCurrent = $("#current-humidity");
 var curretWind = $("#current-wind");
@@ -39,26 +42,29 @@ var fiveDay = $("#future-weather");
 
 // display current weather forecast
 
-function currentForecast(city) {
+function currentForecast(searchCity) {
     var currentWeatherUrl =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
-      city +
+      searchCity +
       "&appid=" +
       APIkey;
 
       fetch(currentWeatherUrl)
+      .then(function (response) {
+        return response.json();
+      })
       .then(function (data) {
         console.log(data)
 
         var forecastIcon = data.weather[0].icon;
-        var iconURL = "https://openweatherapp.org/img/wn"+ forecastIcon +"@2x.png";
-        var forecastImg = $('<img>');
-        forecastImg.attr(data.name + ' ');
-        currentCity.append(forecastImg);
+        var iconURL = "https://openweatherapp.org/img/wn/"+ forecastIcon +"@2x.png";
+        // var forecastImg = $('<img>');
+        currentIcon.attr('src', iconURL);
+        
 
         var forecastDescription = data.weather[0].description;
-        forecastDec.text(forecastDescription);
-        forecastDec.css('font-style', 'bold');
+        currentDescription.text(forecastDescription);
+        currentDescription.css('font-style', 'bold');
 
         currentDate.text(moment().format('dddd, l'));
         currentDate.css('font-weight', 'bold');
@@ -125,7 +131,8 @@ function uvIndex (lat, lon) {
 
 search.on('submit', function (event){
     event.preventDefault();
-    console.log(searchCity);
-    currentForecast();
+    console.log(searchCity.val());
+    var nameCity = searchCity.val()
+    currentForecast(nameCity);
  });
 
