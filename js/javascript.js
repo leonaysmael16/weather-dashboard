@@ -12,7 +12,8 @@ var tempCurrent = $("#current-temp");
 var humidityCurrent = $("#current-humidity");
 var curretWind = $("#current-wind");
 var currentUV = $("#currentUv");
-var historyCityBtn = $("#history-button")
+var historyCityBtn = $("#history-button");
+var searchHistory = $('#search-history')
 var fiveDay = $("#future-weather");
 // display current weather
 
@@ -79,7 +80,7 @@ function currentForecast(searchCity) {
         var humidityResult = data.main.humidity;
         humidityCurrent.text('Humidity:' + ' ' + Math.floor(humidityResult) + '%');
         
-        getUVIndex(data.coord.lat, data.coord.lon);
+        uvIndex(data.coord.lat, data.coord.lon);
         fiveDayForecast(data.name);
 
 
@@ -95,7 +96,7 @@ function uvIndex (lat, lon) {
     '&exclude={minutely,hourly,daily}&appid=' + 
     APIKey;
     
-    fetch(uvIndex)
+    fetch(uvURL)
     .then(function(response) {
     return response.json();
     })
@@ -104,7 +105,7 @@ function uvIndex (lat, lon) {
         console.log(data);
 
         var UVdata = data.current.uvi;
-        var UVresult = parseFloat(UVreadingData);
+        var UVresult = parseFloat(UVdata);
         displayUV = $('<span class="py-2 px-4 rounded">${UVresult}</span>');
         currentUV.text('UV Index: ' + ' ');
         currentUV.append(displayUV);
@@ -125,6 +126,8 @@ function uvIndex (lat, lon) {
     });
 }
 
+// function getFiveDayForecast ()
+
 // clears the search history
 
 // passwordBtnEl.on('click', function () {
@@ -135,7 +138,13 @@ function uvIndex (lat, lon) {
 // Displays the search history
 
 function displayHistory() {
-    historyCityBtn
+    historyCityBtn = $('<li><button id="history-button" data-city=${searchCity} class="btn btn-primary" type="button">${searchCity}</button>');
+    searchHistory.append(historyCityBtn);
+
+    var historyBtn = $(this).data('searchCity');
+
+
+    currentForecast(historyBtn);
 }
 
 // Search function 
