@@ -57,9 +57,10 @@ function currentForecast(searchCity) {
         console.log(data)
 
         var forecastIcon = data.weather[0].icon;
-        var iconURL = "https://openweatherapp.org/img/wn/"+ forecastIcon +"@2x.png";
+        var iconURL = "http://openweatherapp.org/img/wn/" + forecastIcon + "@2x.png";
         // var forecastImg = $('<img>');
         currentIcon.attr('src', iconURL);
+
         
 
         var forecastDescription = data.weather[0].description;
@@ -70,10 +71,16 @@ function currentForecast(searchCity) {
         currentDate.css('font-weight', 'bold');
 
         var tempResult = data.main.temp;
-        tempCurrent.text('Temp: ' + ' ' + Math.floor(tempResult) + 'F');
+        tempCurrent.text('Temp: ' + ' ' + Math.floor(tempResult) + '℉');
 
         var windResult = data.wind.speed;
         curretWind.text('Wind: ' + ' ' + Math.floor(windResult) + 'MPH');
+
+        var humidityResult = data.main.humidity;
+        humidityCurrent.text('Humidity:' + ' ' + Math.floor(humidityResult) + '%');
+        
+        getUVIndex(data.coord.lat, data.coord.lon);
+        fiveDayForecast(data.name);
 
 
       })
@@ -127,7 +134,11 @@ function uvIndex (lat, lon) {
 
 // Displays the search history
 
+function displayHistory() {
+    historyCityBtn
+}
 
+// Search function 
 
 search.on('submit', function (event){
     event.preventDefault();
