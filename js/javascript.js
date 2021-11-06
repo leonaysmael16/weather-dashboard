@@ -125,7 +125,7 @@ function uvIndex (lat, lon) {
 
     });
 }
-
+// function to get weather forecast
 function getFiveDayForecast (searchCity) {
     var fiveDayUrl =
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -146,6 +146,13 @@ function getFiveDayForecast (searchCity) {
             console.log(day)
             const date = moment.unix(day.dt).format('L'); 
             console.log(date)
+            $('fiveday${i}')
+
+            var fiveDayIcon = data.list[(i * 8) + 1].weather[0].icon;
+            var fiveDayIconURL = "http://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png";
+            var fiveIconIMG = $('<img>');
+            fiveIconIMG.attr('src', fiveDayIconURL);
+
             
         }
       })
@@ -164,7 +171,7 @@ function getFiveDayForecast (searchCity) {
 // Displays the search history
 
 function displayHistory() {
-    historyCityBtn = $('<li><button id="history-button" data-city=${searchCity} class="btn btn-primary" type="button">${searchCity}</button>');
+    historyButton = $(`<li><button id='history-btn' data-city='${searchCity}' class='btn btn-outline-secondary' type='button'>${searchCity}</button>`);
     searchHistory.append(historyCityBtn);
 
     var historyBtn = $(this).data('searchCity');

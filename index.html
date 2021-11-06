@@ -15,84 +15,101 @@
 <body class="flex-column min-100-vh">
     <header class="container-fluid bg-dark text-light p-3">
         <div class="d-flex justify-content-center">
-          <h1>Weather Dashboard</h1>
+            <h1>Weather Dashboard</h1>
         </div>
-      </header>
-<header>
-    <h1 class="title-page">Welcome to the Weather Forecast!</h1>
-    <p>Type a city below to see the weather forecast for the nest five days</p>
-</header>
+    </header>
+    <header>
+        <h1 class="title-page">Welcome to the Weather Forecast!</h1>
+        <p>Type a city below to see the weather forecast for the nest five days</p>
+    </header>
 
-<main class="flex-row justify-space-between">
-<div class="col-12 col-md-4">
-    
-    <div class="search-bar">
-        <h3 class="text-uppercase">Search by City</h3>
-        <form id="city-form" class="card-body">
-            <label class="form-label" for="city">Search City</label>
-            <input id="search-city" type="text" class="form-input" />
-            <button type="submit" class="btn btn-primary" id="search-button">Search</button>
-        </form>
-        <ul id="search-history">
+    <main class="flex-row justify-space-between">
+        <div class="col-12 col-md-4">
 
-        </ul>
-    
+            <div class="search-bar">
+                <h3 class="text-uppercase">Search by City</h3>
+                <form id="city-form" class="card-body">
+                    <label class="form-label" for="city">Search City</label>
+                    <input id="search-city" type="text" class="form-input" />
+                    <button type="submit" class="btn btn-primary" id="search-button">Search</button>
+                </form>
+                <ul id="search-history">
 
+                </ul>
 
 
-    <button class="btn btn-primary" type="button" id="clear-button">Clear History</button>
-<!-- showing current weather for current city -->
-    <div class="col-sm-8">
-        <div class="d-block p-1" id="current-weather">
-            <h3 id="current-city"></h3>
-            <img id="current-icon" src="" />
-            <p id="current-description"></p>
-            <p id="current-day"></p>
-            <p id="current-temp"></p>
-            <p id="current-humidity"></p>
-            <p id="current-wind"></p>
-            <p id="currentUv"></p>
 
+
+                <button class="btn btn-primary" type="button" id="clear-button">Clear History</button>
+                <!-- showing current weather for current city -->
+                <div class="col-sm-8">
+                    <div class="d-block p-1" id="current-weather">
+                        <h3 id="current-city"></h3>
+                        <img id="current-icon" src="" />
+                        <p id="current-description"></p>
+                        <p id="current-day"></p>
+                        <p id="current-temp"></p>
+                        <p id="current-humidity"></p>
+                        <p id="current-wind"></p>
+                        <p id="currentUv"></p>
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-</div>
-<!-- 5 day forecast -->
- <div class="col-12 col-md-8" id="future-weather">
-    <h3>5-Day Forecast: </h3>
-    <div class="col">
-        <p id="day0"></p>
-        <p id="Img0"></p>
-        <p>Temp: <span id="Temp0"></span></p>
-        <p>Humidity: <span id="Humidity0"></span></p>
-    </div>
- </div>
-    <div class="col">
-        <p id="day1"></p>
-        <p id="img1"></p>
-        <p>Temp: <span id="Temp1"></span></p>
-        <p>Humidity: <span id="Humidity1"></span></p>
-    </div>
-    <div class="col">
-        <p id="day2"></p>
-        <p id="img2"></p>
-        <p>Temp: <span id="Temp2"></span></p>
-        <p>Humidity: <span id="humidity2"></span></p>
-    </div>
-    <div class="col">
-        <p id="day3"></p>
-        <p id="img3"></p>
-        <p>Temp: <span id="Temp3"></span></p>
-        <p>Humidity: <span id="humidity3"></span></p>
-    </div>
-    <div class="col">
-        <p id="day4"></p>
-        <p id="img4"></p>
-        <p>Temp: <span id="temp4"></span></p>
-        <p>Humidity: <span id="temp4"></span></p>
-    </div> 
+        <!-- 5 day forecast -->
+        <section>
+            <div class="col-12 col-md-8" id="future-weather">
+                <h3>5-Day Forecast: </h3>
+                <div class="col">
+                    <div class="card w-60 p-1" id="card-body">
+                        <h4 class="card-text" id="fiveday1"></h4>
+                        <p class="card-text" id="fivedayicon1"></p>
+                        <p class="card-text" id="fivedaytemp1"></p>
+                        <p class="card-text" id="fivedaywind1"></p>
+                        <p class="card-text" id="fivedayhumid1"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card w-60 p-1" id="card-body">
+                    <h4 class="card-text" id="fiveday2"></h4>
+                    <p class="card-text" id="fivedayicon2"></p>
+                    <p class="card-text" id="fivedaytemp2"></p>
+                    <p class="card-text" id="fivedaywind2"></p>
+                    <p class="card-text" id="fivedayhumid2"></p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card w-60 p-1" id="card-body">
+                    <h4 class="card-text" id="fiveday3"></h4>
+                    <p class="card-text" id="fivedayicon3"></p>
+                    <p class="card-text" id="fivedaytemp3"></p>
+                    <p class="card-text" id="fivedaywind3"></p>
+                    <p class="card-text" id="fivedayhumid3"></p>
+                </div>
+                <div class="col">
+                    <div class="card w-60 p-1" id="card-body">
+                        <h4 class="card-text" id="fiveday4"></h4>
+                        <p class="card-text" id="fivedayicon4"></p>
+                        <p class="card-text" id="fivedaytemp4"></p>
+                        <p class="card-text" id="fivedaywind4"></p>
+                        <p class="card-text" id="fivedayhumid4"></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-60 p-1" id="card-body">
+                        <h4 class="card-text" id="fiveday5"></h4>
+                        <p class="card-text" id="fivedayicon5"></p>
+                        <p class="card-text" id="fivedaytemp5"></p>
+                        <p class="card-text" id="fivedaywind5"></p>
+                        <p class="cardd-text" id="fivedayhumid"></p>
+                    </div>
+                </div>
+        </section>
+        
 
-    <!-- <div class="row">
+        <!-- <div class="row">
         <div class="col-12">
             <h3>5-Day Forecast</h3>
         </div>
@@ -106,13 +123,16 @@
     </div> -->
 
 
-    
-</div>
-</main>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="./js/javascript.js"></script>
+        
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/javascript.js"></script>
 
 
 
