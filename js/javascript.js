@@ -55,12 +55,12 @@ function currentForecast(searchCity) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data)
+        // console.log(data)
 
         var forecastIcon = data.weather[0].icon;
-        var iconURL = "http://openweatherapp.org/img/wn/" + forecastIcon + "@2x.png";
+        var iconURL = "http://openweathermap.org/img/wn/" + forecastIcon + "@2x.png";
         // var forecastImg = $('<img>');
-        currentIcon.attr('src', iconURL);
+        $('#current-icon').attr('src', iconURL);
 
         
 
@@ -81,7 +81,7 @@ function currentForecast(searchCity) {
         humidityCurrent.text('Humidity:' + ' ' + Math.floor(humidityResult) + '%');
         
         uvIndex(data.coord.lat, data.coord.lon);
-        fiveDayForecast(data.name);
+        getFiveDayForecast(searchCity);
 
 
       })
@@ -94,7 +94,7 @@ function uvIndex (lat, lon) {
     '&lon=' + 
     lon + 
     '&exclude={minutely,hourly,daily}&appid=' + 
-    APIKey;
+    APIkey;
     
     fetch(uvURL)
     .then(function(response) {
@@ -102,11 +102,11 @@ function uvIndex (lat, lon) {
     })
     .then(function (data) {
         console.log('');
-        console.log(data);
+        // console.log(data);
 
         var UVdata = data.current.uvi;
         var UVresult = parseFloat(UVdata);
-        displayUV = $('<span class="py-2 px-4 rounded">${UVresult}</span>');
+        displayUV = $(`<span class="py-2 px-4 rounded">${UVresult}</span>`);
         currentUV.text('UV Index: ' + ' ');
         currentUV.append(displayUV);
 
@@ -126,7 +126,33 @@ function uvIndex (lat, lon) {
     });
 }
 
-// function getFiveDayForecast ()
+function getFiveDayForecast (searchCity) {
+    var fiveDayUrl =
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      searchCity +
+      "&appid=" +
+      APIkey;
+
+      fetch(fiveDayUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data)
+        var forecastArray = data.list;
+        const today = moment().format('L');
+        for (let index = 8; index < forecastArray.length; index += 8) {
+            const day = forecastArray[index];
+            console.log(day)
+            const date = moment.unix(day.dt).format('L'); 
+            console.log(date)
+            
+        }
+      })
+      .catch(function (error) {
+          console.error(error)
+      })
+}
 
 // clears the search history
 
