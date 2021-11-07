@@ -130,6 +130,7 @@ function getFiveDayForecast (searchCity) {
     var fiveDayUrl =
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
       searchCity +
+      '&units=imperial' +
       "&appid=" +
       APIkey;
 
@@ -138,7 +139,7 @@ function getFiveDayForecast (searchCity) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data)
+        console.log(data);
         var forecastArray = data.list;
         const today = moment().format('L');
         for (let index = 8; index < forecastArray.length; index += 8) {
@@ -146,20 +147,31 @@ function getFiveDayForecast (searchCity) {
             console.log(day)
             const date = moment.unix(day.dt).format('L'); 
             console.log(date)
-            $('fiveday${i}')
+            
 
             var fiveDayIcon = data.list[(i * 8) + 1].weather[0].icon;
             var fiveDayIconURL = "http://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png";
             var fiveIconIMG = $('<img>');
             fiveIconIMG.attr('src', fiveDayIconURL);
+            $(`#fivedayicon${i}`).html(fiveIconIMG);
 
+            var temp =  data.list[(i * 8) +1].main.temp;
+            const newLocal = '#fivedaytemp${i}';
+            $(`#fivedaytemp${i}`).text('Temp: ' + ' ' + Math.floor(temp) + '℉');
+
+            var wind = data.list[(i * 8) + 1].wind.speed;
+            $(`#fivedaywind${i}`).text('Wind: ' + ' ' + Math.floor(wind) + ' ' + MPH);
+
+            var humidity = data.list[(i * 8) +1].main.humidity;
+            $(`#fivedayhumidity${i}`).text('Humidity: ' + ' ' + Math.floor(humidity) + '%');
             
-        }
+            
+        };
       })
       .catch(function (error) {
           console.error(error)
-      })
-}
+      });
+};
 
 // clears the search history
 
