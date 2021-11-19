@@ -154,14 +154,16 @@ function getFiveDayForecast (searchCity) {
             
 
             var temp =  day.main.temp;
+            var wind = day.wind.speed;
+            var fiveDayDescription = day.weather[0].main
             $('#future-weather').append(`
             <div class="col">
             <div class="card w-60 p-1" id="card-body">
-                <h4 class="card-text" id="fiveday1">${date}</h4>
-                <img src="${fiveDayIconURL}"/>
-                <p class="card-text" id="fivedaytemp1">${temp}</p>
-                <p class="card-text" id="fivedaywind1"></p>
-                <p class="card-text" id="fivedayhumid1"></p>
+                <h4 class="card-text" id="fiveday1">Date: ${date}</h4>
+                <p><img src="${fiveDayIconURL}" /></p>
+                <p class="card-text" id="fivedaytemp1">Temp: ${temp}</p>
+                <p class="card-text" id="fivedaywind1">Wind: ${wind}</p>
+                <p class="card-text" id="fivedayhumid1">${fiveDayDescription} </p>
             </div>
         </div>
             `)
@@ -202,17 +204,17 @@ search.on('submit', function (event){
     currentForecast(nameCity);
  });
 
- var string = "i am string"
+//  var string = "i am string"
 
- var number = 10
+//  var number = 10
 
- var object = {
-     name: "Sam",
-     job: "Tutor",
-     skill: 10
+//  var object = {
+//      name: "Sam",
+//      job: "Tutor",
+//      skill: 10
 
- }
+//  }
 
-var array = ["hello0", "hello1", string, number, object ]
-console.log(array[4].name)
-console.log(object.name)
+// var array = ["hello0", "hello1", string, number, object ]
+// console.log(array[4].name)
+// console.log(object.name)
