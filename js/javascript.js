@@ -149,22 +149,23 @@ function getFiveDayForecast (searchCity) {
             console.log(date)
             
 
-            var fiveDayIcon = data.list[(i * 8) + 1].weather[0].icon;
+            var fiveDayIcon = day.weather[0].icon;
             var fiveDayIconURL = "http://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png";
-            var fiveIconIMG = $('<img>');
-            fiveIconIMG.attr('src', fiveDayIconURL);
-            $(`#fivedayicon${i}`).html(fiveIconIMG);
-
-            var temp =  data.list[(i * 8) +1].main.temp;
-            const newLocal = '#fivedaytemp${i}';
-            $(`#fivedaytemp${i}`).text('Temp: ' + ' ' + Math.floor(temp) + '℉');
-
-            var wind = data.list[(i * 8) + 1].wind.speed;
-            $(`#fivedaywind${i}`).text('Wind: ' + ' ' + Math.floor(wind) + ' ' + MPH);
-
-            var humidity = data.list[(i * 8) +1].main.humidity;
-            $(`#fivedayhumidity${i}`).text('Humidity: ' + ' ' + Math.floor(humidity) + '%');
             
+
+            var temp =  day.main.temp;
+            $('#future-weather').append(`
+            <div class="col">
+            <div class="card w-60 p-1" id="card-body">
+                <h4 class="card-text" id="fiveday1">${date}</h4>
+                <img src="${fiveDayIconURL}"/>
+                <p class="card-text" id="fivedaytemp1">${temp}</p>
+                <p class="card-text" id="fivedaywind1"></p>
+                <p class="card-text" id="fivedayhumid1"></p>
+            </div>
+        </div>
+            `)
+      
             
         };
       })
@@ -201,3 +202,17 @@ search.on('submit', function (event){
     currentForecast(nameCity);
  });
 
+ var string = "i am string"
+
+ var number = 10
+
+ var object = {
+     name: "Sam",
+     job: "Tutor",
+     skill: 10
+
+ }
+
+var array = ["hello0", "hello1", string, number, object ]
+console.log(array[4].name)
+console.log(object.name)
