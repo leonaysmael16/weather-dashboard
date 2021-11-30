@@ -1,1 +1,5 @@
-# weather-dashboard
+# Weather Dashboard
+
+# Purpose of This Project
+```
+The Purpose
