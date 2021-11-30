@@ -16,6 +16,11 @@ view to current day weather and the weather for the next five days
 
 ![Screen Shot 2021-11-30 at 3 32 54 PM](https://user-images.githubusercontent.com/84559394/144144904-031120db-5946-4317-8898-985082d7583e.png)
 
+# Links 
+
+Deployed Link: https://leonaysmael16.github.io/weather-dashboard/
+
+Github Repo: https://github.com/leonaysmael16/weather-dashboard
 # Acknowledgements
 
 The University of Washing Coding Bootcamp is providing me the materials and skills I need to make this project possible
